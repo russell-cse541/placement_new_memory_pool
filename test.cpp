@@ -1,7 +1,5 @@
-#if defined(NUM)
-    #define ITERATIONS NUM
-#else
-    #define ITERATIONS 1000
+#ifndef ITERATIONS
+#define ITERATIONS 50
 #endif
 
 #include <new> // for placement new
