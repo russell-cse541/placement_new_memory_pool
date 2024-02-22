@@ -16,7 +16,7 @@ struct DV {
 class PoolAlloc {
     public:
         PoolAlloc() {
-            int requiredMemory = ITERATIONS * sizeof(DV);
+            int requiredMemory = (ITERATIONS * sizeof(DV)) + (ITERATIONS * sizeof(DV*));
             this->pool = mmap(0,requiredMemory , PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
             this->startOfPool = this->pool;
             if (pool == MAP_FAILED) {
