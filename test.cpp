@@ -27,7 +27,7 @@ class PoolAlloc {
         }
 
         ~PoolAlloc() {
-            munmap(this->startOfPool, ITERATIONS * sizeof(DV));
+            munmap(this->startOfPool, (ITERATIONS * sizeof(DV)) + (ITERATIONS * sizeof(DV*)));
             cout<<"Memory Pool Deallocated Using munmap"<<endl;
         }
 
