@@ -2,7 +2,7 @@
 #define ITERATIONS 50
 #endif
 
-#include <new> // for placement new
+#include <new>
 #include <iostream>
 #include <sys/mman.h>
 
