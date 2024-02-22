@@ -16,8 +16,8 @@ struct DV {
 class PoolAlloc {
     public:
         PoolAlloc() {
-            requiredMemory = (ITERATIONS * sizeof(DV)) + (ITERATIONS * sizeof(DV*));
-            this->pool = mmap(0,requiredMemory , PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
+            this->requiredMemory = (ITERATIONS * sizeof(DV)) + (ITERATIONS * sizeof(DV*));
+            this->pool = mmap(0,this->requiredMemory , PROT_READ | PROT_WRITE, MAP_ANON | MAP_PRIVATE, -1, 0);
             this->startOfPool = this->pool;
             if (pool == MAP_FAILED) {
                 cout << "mmap failed to allocate required memory size" << endl;
@@ -27,7 +27,7 @@ class PoolAlloc {
         }
 
         ~PoolAlloc() {
-            munmap(this->startOfPool, requiredMemory);
+            munmap(this->startOfPool, this->requiredMemory);
             cout<<"Memory Pool Deallocated Using munmap"<<endl;
         }
 
